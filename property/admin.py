@@ -10,10 +10,10 @@ class OwnerInline(admin.TabularInline):
 
 @admin.register(Flat)
 class FlatAdmin(admin.ModelAdmin):
-    search_fields = ['town', 'owner', 'address', 'id']
+    search_fields = ['town', 'address', 'id']
     readonly_fields = ('created_at',)
     list_display = (
-        'address', 'price', 'owner_pure_phone', 'owners_phonenumber', 'new_building', 'construction_year', 'town')
+        'address', 'price', 'new_building', 'construction_year', 'town')
     list_editable = ['new_building']
     list_filter = ['new_building', 'rooms_number', 'has_balcony']
     raw_id_fields = ('liked_by',)
