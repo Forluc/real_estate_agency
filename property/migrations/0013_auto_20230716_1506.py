@@ -8,7 +8,9 @@ def get_owners_info(apps, schema_editor):
     Owner = apps.get_model('property', 'Owner')
     flats = Flat.objects.all()
     for flat in flats.iterator():
-        Owner.objects.get_or_create(owner=flat.owner, phone=flat.owners_phonenumber, pure_phone=flat.owner_pure_phone)
+        owner, _ = Owner.objects.get_or_create(owner=flat.owner, phone=flat.owners_phonenumber,
+                                               pure_phone=flat.owner_pure_phone)
+        owner.owned_flats.add(flat.id)
 
 
 class Migration(migrations.Migration):
