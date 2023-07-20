@@ -48,7 +48,7 @@ class Flat(models.Model):
         'Год постройки здания',
         null=True,
         db_index=True)
-    liked_by = models.ManyToManyField(User, related_name='liked_flats', blank=True)
+    liked_by = models.ManyToManyField(User, related_name='liked_flats', verbose_name='Лайки', blank=True)
     new_building = models.BooleanField(
         choices=[(True, 'Новостройка'), (False, 'Старое здание')], blank=True, null=True)
 
