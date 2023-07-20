@@ -1,3 +1,4 @@
+
 from django.contrib.auth.models import User
 from django.db import models
 from django.utils import timezone
@@ -67,10 +68,10 @@ class Complaint(models.Model):
 
 
 class Owner(models.Model):
-    owner = models.CharField('ФИО владельца', max_length=200, db_index=True)
+    name = models.CharField('ФИО владельца', max_length=200, db_index=True)
     phone = models.CharField('Номер владельца', max_length=20, db_index=True)
     pure_phone = PhoneNumberField('Нормализованный номер владельца', blank=True, db_index=True)
-    owned_flats = models.ManyToManyField(Flat, related_name='owner_flats', verbose_name='Квартиры в собственности')
+    flats = models.ManyToManyField(Flat, related_name='owner_flats', verbose_name='Квартиры в собственности')
 
     def __str__(self):
-        return f'{self.owner}'
+        return f'{self.name}'

@@ -4,7 +4,7 @@ from .models import Flat, Complaint, Owner
 
 
 class OwnerInline(admin.TabularInline):
-    model = Owner.owned_flats.through
+    model = Owner.flats.through
     raw_id_fields = ('owner', 'flat')
 
 
@@ -29,6 +29,6 @@ class ComplaintAdmin(admin.ModelAdmin):
 
 @admin.register(Owner)
 class OwnerAdmin(admin.ModelAdmin):
-    search_fields = ['owner']
-    raw_id_fields = ('owned_flats',)
+    search_fields = ['name']
+    raw_id_fields = ('flats',)
 
